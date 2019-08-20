@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">@color/cherry</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+
+    <color name="brown">#88474D</color>
+    <color name="red">#DF081D</color>
+    <color name="cherry">#D94352</color>
+    <color name="orange">#E16851</color>
+    <color name="tint">#4CAF7D</color>
+    <color name="tint_contrast">#40BD77</color>
+    <color name="salad_green">#80C443</color>
+    <color name="light_blue">#3C98EE</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000000</color>
+    <color name="gray">#B4B4B4</color>
+    <color name="splash_background">#FFD5D5</color>
+
+</resources>
