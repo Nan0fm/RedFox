@@ -1,6 +1,5 @@
 package space.foxmount.redfox.ui.adapter.view_holders
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
@@ -12,14 +11,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.request.RequestOptions
 import space.foxmount.redfox.R
+import space.foxmount.redfox.data.db.Topic
 import space.foxmount.redfox.domain.Utils
-import space.foxmount.redfox.domain.model.Topic
 
 
 class VideoTopicVh(
     view: View
     , val topicClick: (Topic) -> Unit
-) : RecyclerView.ViewHolder(view) {
+) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
 
     val subredditView: TextView = view.findViewById(R.id.subredditTextView)
     val authorView: TextView = view.findViewById(R.id.authorView)

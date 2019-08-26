@@ -1,6 +1,6 @@
 package space.foxmount.redfox.data.api
 
-import io.reactivex.Observable
+import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.QueryMap
 
@@ -8,9 +8,9 @@ import retrofit2.http.QueryMap
 interface RedditRequest {
 
     @GET("/top/.json")
-    fun getListTopTopics(): Observable<RedditResponse>
+    fun getListTopTopics(): Response<RedditResponse>
 
     @GET("/top/.json")
-    fun getListTopTopics(@QueryMap(encoded = true) paramsMap: Map<String, String>): Observable<RedditResponse>
+    fun getListTopTopics(@QueryMap(encoded = true) paramsMap: Map<String, String>): Response<RedditResponse>
 
 }

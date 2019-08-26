@@ -1,14 +1,14 @@
 package space.foxmount.redfox.ui.adapter.view_holders
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import space.foxmount.redfox.R
+import space.foxmount.redfox.data.db.Topic
 import space.foxmount.redfox.domain.Utils
-import space.foxmount.redfox.domain.model.Topic
 
 class ImageTopicVh(
     view: View

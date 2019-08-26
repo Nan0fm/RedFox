@@ -1,31 +1,31 @@
 package space.foxmount.redfox.data.api
 
-import io.reactivex.Observable
-import io.reactivex.subjects.PublishSubject
 import retrofit2.Response
-import space.foxmount.redfox.data.repository.*
-import space.foxmount.redfox.domain.mapper.TopicMapper
-import space.foxmount.redfox.domain.model.Topic
+import space.foxmount.redfox.data.repository.QUERY_COUNT
 import java.net.SocketTimeoutException
 import java.net.UnknownHostException
 import java.util.*
 
-class ApiRepository(val api: RedditRequest) : SimpleRepository() {
+class ApiRepository {
 
-    private val topics = PublishSubject.create<List<Topic>>()
+    val apiInterface = ApiFactory.API_SERVICE
 
-    override fun getAll(query: QueryTopic): Observable<List<Topic>> {
-        return when {
-            query.has(QUERY_LIMIT) -> api.getListTopTopics(
-                generateParams(
-                    query.get(QUERY_LIMIT),
-                    query.get((QUERY_AFTER))
-                )
-            ).flatMap { r ->
-                Observable.just(TopicMapper().convertDataToModel(r))
+    companion object {
+
+        private var repo: ApiRepository? = null
+
+        fun getInstance(): ApiRepository {
+            if (repo == null) {
+                repo = ApiRepository()
             }
-            else -> throw(IllegalArgumentException("Unsupported query $query for PostEntity"))
+            return repo as ApiRepository
         }
+    }
+
+    suspend fun getTopics(count: String = QUERY_COUNT, lastName: String?): Result<Any>? {
+        val call: suspend () -> Response<RedditResponse> =
+            { apiInterface.getListTopTopics(generateParams(count, lastName)) }
+        return safetyCall(call, PAGE_COMMON)
     }
 
     suspend fun <T : Any> safetyCall(
@@ -47,7 +47,8 @@ class ApiRepository(val api: RedditRequest) : SimpleRepository() {
         return response
     }
 
-    fun generateParams(count: String? = QUERY_COUNT, lastName: String?): Map<String, String> {
+
+    fun generateParams(count: String, lastName: String?): Map<String, String> {
         val fieldsMap = HashMap<String, String>()
         lastName?.let { fieldsMap["after"] = lastName }
         fieldsMap["limit"] = count.toString()

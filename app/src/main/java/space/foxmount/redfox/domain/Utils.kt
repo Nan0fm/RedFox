@@ -1,5 +1,7 @@
 package space.foxmount.redfox.domain
 
+import android.text.SpannableStringBuilder
+import space.foxmount.redfox.data.db.Topic
 import java.text.ParseException
 import java.text.SimpleDateFormat
 import java.util.*
@@ -19,6 +21,20 @@ class Utils {
         return convertedDate
     }
 
+    fun getPostStats(postEntity: Topic): SpannableStringBuilder {
+        val statStringBuilder = SpannableStringBuilder()
+        statStringBuilder.append(withSuffix(postEntity.rating) + " points" + "\n" +
+                postEntity.commentsCount + " comments")
+        return statStringBuilder
+    }
+
+    fun withSuffix(count: Int): String {
+        return when {
+            count < 10000 -> count.toString()
+            count < 100000 -> (count / 1000).toString() + "k"
+            else -> (count / 1000).toString()
+        }
+    }
 
     fun getTimeAgo(postedDate: String): String {
         val date = stringToDate(postedDate)

@@ -1,9 +1,9 @@
 package space.foxmount.redfox.data.db
 
-import android.arch.persistence.room.*
 import android.content.Context
+import androidx.room.*
 
-@Database(entities = arrayOf(TopicInfo::class), version = 1)
+@Database(entities = arrayOf(Topic::class), version = 1)
 abstract class AppDatabase : RoomDatabase() {
 
     abstract fun postDao(): PostDao
@@ -28,7 +28,7 @@ abstract class AppDatabase : RoomDatabase() {
 
 
 @Entity
-data class TopicInfo(
+data class Topic(
     @ColumnInfo(name = "title") val title: String
     , @ColumnInfo(name = "topicType") val topicType: String?
     , @ColumnInfo(name = "name") val name: String

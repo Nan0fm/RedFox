@@ -3,8 +3,7 @@ package space.foxmount.redfox.domain.mapper
 import space.foxmount.redfox.data.api.Media
 import space.foxmount.redfox.data.api.RedditResponse
 import space.foxmount.redfox.data.api.TopicData
-import space.foxmount.redfox.data.db.TopicInfo
-import space.foxmount.redfox.domain.model.Topic
+import space.foxmount.redfox.data.db.Topic
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -16,7 +15,7 @@ class TopicMapper {
         }
     }
 
-    fun convertDbDataToModel(dbData: List<TopicInfo>): List<Topic> {
+    fun convertDbDataToModel(dbData: List<space.foxmount.redfox.data.db.Topic>): List<Topic> {
         return dbData.map { redditTopic ->
             convertDbDataToTopic(redditTopic)
         }
@@ -42,7 +41,7 @@ class TopicMapper {
         }
     }
 
-    fun convertDbDataToTopic(redditTopic: TopicInfo): Topic {
+    fun convertDbDataToTopic(redditTopic: space.foxmount.redfox.data.db.Topic): Topic {
         with(redditTopic) {
             return Topic(
                 title = title, name = name
@@ -63,9 +62,9 @@ class TopicMapper {
         }
     }
 
-    fun convertTopicToDbInfo(redditTopic: Topic): TopicInfo {
+    fun convertTopicToDbInfo(redditTopic: Topic): space.foxmount.redfox.data.db.Topic {
         with(redditTopic) {
-            return TopicInfo(
+            return space.foxmount.redfox.data.db.Topic(
                 title = title, name = name
                 , topicType = topicType
                 , authorName = authorName

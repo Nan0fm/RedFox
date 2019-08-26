@@ -1,10 +1,10 @@
 package space.foxmount.redfox.ui.adapter
 
-import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.RecyclerView
 import space.foxmount.redfox.R
-import space.foxmount.redfox.domain.model.Topic
+import space.foxmount.redfox.data.db.Topic
 import space.foxmount.redfox.ui.adapter.view_holders.ImageTopicVh
 import space.foxmount.redfox.ui.adapter.view_holders.LinkTopicVh
 import space.foxmount.redfox.ui.adapter.view_holders.VideoTopicVh

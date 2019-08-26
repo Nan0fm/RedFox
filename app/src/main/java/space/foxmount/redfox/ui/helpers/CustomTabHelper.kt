@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.support.customtabs.CustomTabsService
 import android.text.TextUtils
+import androidx.browser.customtabs.CustomTabsService
 
 class CustomTabHelper {
 

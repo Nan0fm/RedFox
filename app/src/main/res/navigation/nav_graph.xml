@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/topicsFragment">
+
+    <fragment
+        android:id="@+id/topicsFragment"
+        android:name="space.foxmount.redfox.ui.topics.TopicsFragment"
+        android:label="topics_fragment"
+        tools:layout="@layout/topics_fragment" />
+</navigation>

@@ -1,19 +1,18 @@
 package space.foxmount.redfox.ui.adapter.view_holders
 
-import android.support.v7.widget.RecyclerView
 import android.view.View
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import space.foxmount.redfox.R
+import space.foxmount.redfox.data.db.Topic
 import space.foxmount.redfox.domain.Utils
-import space.foxmount.redfox.domain.model.Topic
 
 class LinkTopicVh(
     view: View
     , val topicClick: (Topic) -> Unit
-) : RecyclerView.ViewHolder(view) {
+) : androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
     val subredditView: TextView = view.findViewById(R.id.subredditTextView)
     val authorView: TextView = view.findViewById(R.id.authorView)
     val rate: TextView = view.findViewById(R.id.rateView)

@@ -1,7 +1,7 @@
 package space.foxmount.redfox.ui
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import space.foxmount.redfox.R
 
 class WebActivity : AppCompatActivity() {

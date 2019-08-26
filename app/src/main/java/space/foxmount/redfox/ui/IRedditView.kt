@@ -1,12 +1,8 @@
 package space.foxmount.redfox.ui
 
-import com.arellomobile.mvp.MvpView
-import com.arellomobile.mvp.viewstate.strategy.AddToEndSingleStrategy
-import com.arellomobile.mvp.viewstate.strategy.StateStrategyType
-import space.foxmount.redfox.domain.model.Topic
+import space.foxmount.redfox.data.db.Topic
 
-@StateStrategyType(AddToEndSingleStrategy::class)
-interface IRedditView : MvpView {
+interface IRedditView {
 
     fun showTopics(topics: List<Topic>)
 
