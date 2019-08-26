@@ -47,7 +47,6 @@ class ApiRepository {
         return response
     }
 
-
     fun generateParams(count: String, lastName: String?): Map<String, String> {
         val fieldsMap = HashMap<String, String>()
         lastName?.let { fieldsMap["after"] = lastName }

@@ -8,8 +8,11 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.topics_fragment.*
 import space.foxmount.redfox.R
@@ -18,16 +21,11 @@ import space.foxmount.redfox.ui.WebActivity
 import space.foxmount.redfox.ui.adapter.TopicsAdapter
 import space.foxmount.redfox.ui.helpers.CustomTabHelper
 
-class TopicsFragment : androidx.fragment.app.Fragment() {
+class TopicsFragment : Fragment() {
 
     lateinit var adapter: TopicsAdapter
 
     private var customTabHelper: CustomTabHelper = CustomTabHelper()
-
-
-    companion object {
-        fun newInstance() = TopicsFragment()
-    }
 
     private lateinit var viewModel: TopicsViewModel
 
@@ -69,7 +67,7 @@ class TopicsFragment : androidx.fragment.app.Fragment() {
         topicsRv.adapter = adapter
 
         topicsRv.addOnScrollListener(object :
-            androidx.recyclerview.widget.RecyclerView.OnScrollListener() {
+            RecyclerView.OnScrollListener() {
             override fun onScrolled(
                 recyclerView: androidx.recyclerview.widget.RecyclerView,
                 dx: Int, dy: Int
@@ -97,8 +95,12 @@ class TopicsFragment : androidx.fragment.app.Fragment() {
 
 
     fun showTopics(topics: List<Topic>) {
-        adapter.addTopics(topics)
-        adapter.notifyDataSetChanged()
+        if (topics.size > 0) {
+            rlEmpty.isVisible = false
+            refreshTopics.isVisible = true
+            adapter.addTopics(topics)
+            adapter.notifyDataSetChanged()
+        }
     }
 
     fun runChromeTabs(url: String) {
@@ -129,7 +131,6 @@ class TopicsFragment : androidx.fragment.app.Fragment() {
             customTabsIntent.intent.setPackage(packageName)
             customTabsIntent.launchUrl(context!!, Uri.parse(url))
         }
-
 
     }
 

@@ -45,7 +45,6 @@ class TopicsViewModel(app: Application) : AndroidViewModel(app) {
         (app as RedFoxApp).component.inject(this)
 
         requestData()
-//        topicsList = repo.getTopics(TOPICS_COUNT,lastShowedTopic)
         topicsList = repo.getTopics()
     }
 
