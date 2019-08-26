@@ -24,14 +24,17 @@ class RedditRepository @Inject constructor(val api: ApiRepository, val topicsDao
 //        return topicsDao.getTopics(count.toString(), topicsDao.findIdByName(lastName))
 //    }
 
+    fun getTopics(): LiveData<List<Topic>> {
+        return topicsDao.getAll()
+    }
+
     fun getTopics(count: Int, lastName: String?): LiveData<List<Topic>> {
-        return topicsDao.getTopics(count.toString(),lastName  )
+        return topicsDao.getTopics(count.toString(), lastName)
     }
 
     fun save(response: RedditResponse) {
         TopicMapper().convertDataToModel(response).forEach {
             topicsDao.saveTopic(it)
-
         }
 
     }

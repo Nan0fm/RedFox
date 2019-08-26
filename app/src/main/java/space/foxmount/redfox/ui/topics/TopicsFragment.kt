@@ -42,12 +42,17 @@ class TopicsFragment : androidx.fragment.app.Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(TopicsViewModel::class.java)
 
-
         viewModel.topicLink.observe(viewLifecycleOwner, Observer {
-            it?.let {
-                runChromeTabs(it)
-
-            }
+            it?.let { runChromeTabs(it) }
+        })
+        viewModel.topicsList.observe(viewLifecycleOwner, Observer {
+            it?.let { showTopics(it) }
+        })
+        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
+            it?.let { setRefreshing(it) }
+        })
+        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
+            it?.let { showError(it) }
         })
 
     }

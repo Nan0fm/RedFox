@@ -8,9 +8,9 @@ import retrofit2.http.QueryMap
 interface RedditRequest {
 
     @GET("/top/.json")
-    fun getListTopTopics(): Response<RedditResponse>
+    suspend  fun getListTopTopics(): Response<RedditResponse>
 
     @GET("/top/.json")
-    fun getListTopTopics(@QueryMap(encoded = true) paramsMap: Map<String, String>): Response<RedditResponse>
+    suspend  fun getListTopTopics(@QueryMap(encoded = true) paramsMap: Map<String, String>): Response<RedditResponse>
 
 }
