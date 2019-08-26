@@ -55,12 +55,12 @@ class ApiModule {
 
 @Module
 class RoomModule @Inject constructor(app: Application) {
-    val demoDatabase: AppDatabase
 
+    val demoDatabase: AppDatabase
 
     init {
         demoDatabase = Room.databaseBuilder(
-            app, AppDatabase::class.java, "user_database"
+            app, AppDatabase::class.java, "red_fox"
         )
             .fallbackToDestructiveMigration()
             .build()

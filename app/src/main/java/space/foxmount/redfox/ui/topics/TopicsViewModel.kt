@@ -59,13 +59,12 @@ class TopicsViewModel(app: Application) : AndroidViewModel(app) {
         isLoading.postValue(true)
         scope.launch {
 
-            val resp = repo.api.getTopics(TOPICS_COUNT.toString(), lastShowedTopic)
-            when (resp) {
+            when (val resp = repo.api.getTopics(TOPICS_COUNT.toString(), lastShowedTopic)) {
                 is Result.Success -> {
                     val response = resp.data as RedditResponse
                     repo.save(response)
                     success.postValue(true)
-                    if (!response.data.children.isEmpty())
+                    if (response.data.children.isNotEmpty())
                         lastShowedTopic = response.data.children.last().data.name
                 }
                 is Result.Error -> {

@@ -2,9 +2,9 @@ package space.foxmount.redfox.data.repository
 
 import space.foxmount.redfox.data.db.Topic
 
-val QUERY_LIMIT = "limit"
-val QUERY_AFTER = "after"
-val QUERY_COUNT = "10"
+const val QUERY_LIMIT = "limit"
+const val QUERY_AFTER = "after"
+const val QUERY_COUNT = "10"
 
 interface IRedditRepository {
 

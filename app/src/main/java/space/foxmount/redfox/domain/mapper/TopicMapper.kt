@@ -15,11 +15,7 @@ class TopicMapper {
         }
     }
 
-    fun convertDbDataToModel(dbData: List<space.foxmount.redfox.data.db.Topic>): List<Topic> {
-        return dbData.map { redditTopic ->
-            convertDbDataToTopic(redditTopic)
-        }
-    }
+
 
     fun convertRedditDataToTopic(redditTopic: TopicData): Topic {
         with(redditTopic) {
@@ -41,47 +37,6 @@ class TopicMapper {
         }
     }
 
-    fun convertDbDataToTopic(redditTopic: space.foxmount.redfox.data.db.Topic): Topic {
-        with(redditTopic) {
-            return Topic(
-                title = title, name = name
-                , topicType = topicType
-                , authorName = authorName
-                , subreddit = subreddit
-                , postDate = postDate
-                , thumbUrl = thumbUrl
-                , rating = rating
-                , commentsCount = commentsCount
-                , fullLink = fullLink
-                , videoLink = videoLink
-                , isGif = isGif
-                , urlLink = urlLink
-                , selfText = selfText
-
-            )
-        }
-    }
-
-    fun convertTopicToDbInfo(redditTopic: Topic): space.foxmount.redfox.data.db.Topic {
-        with(redditTopic) {
-            return space.foxmount.redfox.data.db.Topic(
-                title = title, name = name
-                , topicType = topicType
-                , authorName = authorName
-                , subreddit = subreddit
-                , postDate = postDate
-                , thumbUrl = thumbUrl
-                , rating = rating
-                , commentsCount = commentsCount
-                , fullLink = fullLink
-                , videoLink = videoLink
-                , isGif = isGif
-                , urlLink = urlLink
-                , selfText = selfText
-
-            )
-        }
-    }
 
     private fun hasGif(media: Media?): Boolean = if (media?.reddit_video != null) {
         media.reddit_video.is_gif

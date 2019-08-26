@@ -27,9 +27,9 @@ class ImageTopicVh(
 
     fun parseTopic(topic: Topic) {
         with(topic) {
-            subredditView.text = "r/${subreddit}"
+            subredditView.text = "r/$subreddit"
             val postedDate = Utils().getTimeAgo(postDate)
-            authorView.text = "Posted by u/${authorName} ${postedDate}"
+            authorView.text = "Posted by u/$authorName $postedDate"
             titleView.text = title
             rate.text = rating.toString()
             commentsView.text = commentsCount.toString()
@@ -46,7 +46,7 @@ class ImageTopicVh(
                 .placeholder(R.drawable.ic_av_timer_24dp)
                 .into(topicImage)
             itemView.setOnClickListener { v ->
-                Toast.makeText(v.context, authorName, android.widget.Toast.LENGTH_SHORT).show()
+                Toast.makeText(v.context, authorName, Toast.LENGTH_SHORT).show()
             }
             itemView.setOnClickListener { topicClick(topic) }
 

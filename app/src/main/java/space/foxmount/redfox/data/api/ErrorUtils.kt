@@ -6,17 +6,17 @@ import retrofit2.Converter
 import retrofit2.Response
 import java.io.IOException
 
-val RESPONSE_OK = 200
-val RESPONSE_VALUE_ERROR = 400
-val RESPONSE_AUTH_ERROR = 401
-val RESPONSE_NOT_FOUND_ERROR = 404
-val ERROR_WRONG_METHOD = 405
-val ERROR_TIMEOUT = 408
-val ERROR_NO_INTERNET = 499
-val RESPONSE_SERVER_ERROR = 500
-val RESPONSE_SERVER_NOT_WORKING = 503
+const val RESPONSE_OK = 200
+const val RESPONSE_VALUE_ERROR = 400
+const val RESPONSE_AUTH_ERROR = 401
+const val RESPONSE_NOT_FOUND_ERROR = 404
+const val ERROR_WRONG_METHOD = 405
+const val ERROR_TIMEOUT = 408
+const val ERROR_NO_INTERNET = 499
+const val RESPONSE_SERVER_ERROR = 500
+const val RESPONSE_SERVER_NOT_WORKING = 503
 
-val PAGE_COMMON = 10
+const val PAGE_COMMON = 10
 
 data class ErrorModel(val errorMessage: String)
 

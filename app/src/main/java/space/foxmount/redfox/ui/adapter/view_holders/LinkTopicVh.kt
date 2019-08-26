@@ -26,9 +26,9 @@ class LinkTopicVh(
 
     fun parseTopic(topic: Topic) {
         with(topic) {
-            subredditView.text = "r/${subreddit}"
+            subredditView.text = "r/$subreddit"
             val postedDate = Utils().getTimeAgo(postDate)
-            authorView.text = "Posted by u/${authorName} ${postedDate}"
+            authorView.text = "Posted by u/$authorName $postedDate"
             titleView.text = title
             rate.text = rating.toString()
             commentsView.text = commentsCount.toString()

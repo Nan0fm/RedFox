@@ -1,6 +1,5 @@
 package space.foxmount.redfox.data.db
 
-import android.content.Context
 import androidx.room.*
 
 @Database(entities = arrayOf(Topic::class), version = 1)
@@ -8,22 +7,6 @@ abstract class AppDatabase : RoomDatabase() {
 
     abstract fun postDao(): PostDao
 
-    companion object {
-        private var instance: AppDatabase? = null
-
-        fun getInstance(context: Context): AppDatabase? {
-            if (instance == null) {
-                synchronized(AppDatabase::class) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext, AppDatabase::class.java, "red_fox"
-                    )
-                        .fallbackToDestructiveMigration()
-                        .build()
-                }
-            }
-            return instance
-        }
-    }
 }
 
 

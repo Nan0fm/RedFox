@@ -69,7 +69,7 @@ class TopicsFragment : Fragment() {
         topicsRv.addOnScrollListener(object :
             RecyclerView.OnScrollListener() {
             override fun onScrolled(
-                recyclerView: androidx.recyclerview.widget.RecyclerView,
+                recyclerView: RecyclerView,
                 dx: Int, dy: Int
             ) {
                 super.onScrolled(recyclerView, dx, dy)
@@ -95,7 +95,7 @@ class TopicsFragment : Fragment() {
 
 
     fun showTopics(topics: List<Topic>) {
-        if (topics.size > 0) {
+        if (topics.isNotEmpty()) {
             rlEmpty.isVisible = false
             refreshTopics.isVisible = true
             adapter.addTopics(topics)

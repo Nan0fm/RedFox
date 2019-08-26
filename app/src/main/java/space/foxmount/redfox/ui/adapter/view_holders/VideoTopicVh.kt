@@ -34,9 +34,9 @@ class VideoTopicVh(
     fun parseTopic(topic: Topic) {
         with(topic) {
 
-            subredditView.text = "r/${subreddit}"
+            subredditView.text = "r/$subreddit"
             val postedDate = Utils().getTimeAgo(postDate)
-            authorView.text = "Posted by u/${authorName} ${postedDate}"
+            authorView.text = "Posted by u/$authorName $postedDate"
             titleView.text = title
             rate.text = rating.toString()
             commentsView.text = commentsCount.toString()
@@ -48,7 +48,7 @@ class VideoTopicVh(
                     gifView.visibility = VISIBLE
                     Glide
                         .with(itemView)
-                        .load(videoLink + ".gif")
+                        .load("$videoLink.gif")
 
                         .error(R.drawable.ic_av_timer_24dp)
                         .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.AUTOMATIC))
@@ -63,7 +63,7 @@ class VideoTopicVh(
             }
 
             itemView.setOnClickListener { v ->
-                Toast.makeText(v.context, authorName, android.widget.Toast.LENGTH_SHORT).show()
+                Toast.makeText(v.context, authorName, Toast.LENGTH_SHORT).show()
             }
             itemView.setOnClickListener { topicClick(this) }
 

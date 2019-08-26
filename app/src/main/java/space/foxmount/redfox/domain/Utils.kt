@@ -46,10 +46,10 @@ class Utils {
         val hours = minutes / 60
         val days = hours / 24
 
-        if (days.toInt() > 0) return "${days} days ago"
-        if (hours.toInt() > 0) return "${hours} hours ago"
-        if (minutes.toInt() > 0) return "${minutes} minutes ago"
-        if (seconds.toInt() > 0) return "${seconds} seconds ago"
+        if (days.toInt() > 0) return "$days days ago"
+        if (hours.toInt() > 0) return "$hours hours ago"
+        if (minutes.toInt() > 0) return "$minutes minutes ago"
+        if (seconds.toInt() > 0) return "$seconds seconds ago"
         return "now"
     }
 

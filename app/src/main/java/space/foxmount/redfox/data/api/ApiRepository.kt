@@ -50,7 +50,7 @@ class ApiRepository {
     fun generateParams(count: String, lastName: String?): Map<String, String> {
         val fieldsMap = HashMap<String, String>()
         lastName?.let { fieldsMap["after"] = lastName }
-        fieldsMap["limit"] = count.toString()
+        fieldsMap["limit"] = count
         return fieldsMap
     }
 }

@@ -9,7 +9,7 @@ import java.util.concurrent.TimeUnit
 
 object ApiFactory {
 
-    private val BASE_URL = "https://www.reddit.com"
+    private const val BASE_URL = "https://www.reddit.com"
 
     fun retrofit(): Retrofit {
         val interceptor = HttpLoggingInterceptor()
