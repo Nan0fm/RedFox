@@ -9,19 +9,19 @@ import android.view.ViewGroup
 import androidx.browser.customtabs.CustomTabsIntent
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.topics_fragment.*
 import space.foxmount.redfox.R
 import space.foxmount.redfox.data.db.Topic
 import space.foxmount.redfox.ui.WebActivity
-import space.foxmount.redfox.ui.adapter.TopicsAdapter
+import space.foxmount.redfox.ui.base.BaseFragment
 import space.foxmount.redfox.ui.helpers.CustomTabHelper
+import space.foxmount.redfox.ui.topics.adapter.TopicsAdapter
 
-class TopicsFragment : Fragment() {
+class TopicsFragment : BaseFragment() {
 
     lateinit var adapter: TopicsAdapter
 
@@ -40,18 +40,14 @@ class TopicsFragment : Fragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(TopicsViewModel::class.java)
 
-        viewModel.topicLink.observe(viewLifecycleOwner, Observer {
-            it?.let { runChromeTabs(it) }
-        })
-        viewModel.topicsList.observe(viewLifecycleOwner, Observer {
-            it?.let { showTopics(it) }
-        })
-        viewModel.isLoading.observe(viewLifecycleOwner, Observer {
-            it?.let { setRefreshing(it) }
-        })
-        viewModel.errorMessage.observe(viewLifecycleOwner, Observer {
-            it?.let { showError(it) }
-        })
+        viewModel.topicLink observe { runChromeTabs(it) }
+
+        viewModel.topicsList observe { showTopics(it) }
+
+        viewModel.isLoading observe { setRefreshing(it) }
+
+        viewModel.errorMessage observe { showError(it) }
+
 
     }
 
@@ -74,7 +70,7 @@ class TopicsFragment : Fragment() {
             ) {
                 super.onScrolled(recyclerView, dx, dy)
                 val llManager =
-                    topicsRv.layoutManager as androidx.recyclerview.widget.LinearLayoutManager
+                    topicsRv.layoutManager as LinearLayoutManager
                 val visibleItemCount = llManager.childCount
                 val totalItemCount = adapter.itemCount
                 val firstVisibleItemPosition = llManager.findFirstVisibleItemPosition()
