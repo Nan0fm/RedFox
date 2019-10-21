@@ -1,0 +1,6 @@
+/local.properties
+/.idea/
+/app/build/
+/app/app.iml
+/RedFox.iml
+/.gradle/
