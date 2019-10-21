@@ -7,7 +7,6 @@ class RedFoxApp : Application() {
 
     lateinit var component: RedditComponent
 
-
     override fun onCreate() {
         super.onCreate()
         component =
@@ -19,6 +18,5 @@ class RedFoxApp : Application() {
                 .roomModule(RoomModule(this))
                 .build()
     }
-
 
 }
